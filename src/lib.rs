@@ -26,7 +26,7 @@ struct TidemanResponse {
 
 #[wasm_bindgen]
 pub fn find_winner(params: &str) -> String {
-  let deserialized_params: TidemanParams = serde_json::from_str(params).unwrap();
+  let deserialized_params: TidemanParams = serde_json::from_str(&params).unwrap();
 
   
 
