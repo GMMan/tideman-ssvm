@@ -6,6 +6,8 @@ This is based on the [CS50 assignment](https://cs50.harvard.edu/x/2020/psets/3/t
 of the same. Add your candidates, add ballots, and cast votes on each ballot.
 Click on the big button at the bottom to see the results of the election.
 
+Try it out [on Heroku](https://tideman-ssvm.herokuapp.com/)
+
 Remember to run `ssvmup build` before starting the server. See [here](https://github.com/second-state/ssvm-nodejs-starter#use-docker-to-build-and-run)
 if you need a Docker image to run things in.
 
