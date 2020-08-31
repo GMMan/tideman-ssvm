@@ -56,6 +56,10 @@ export default function StartModal(props) {
     setCandidateNames([])
     setShowValidationErrors(false)
   }
+
+  const onFormSubmit = (event) => {
+    event.preventDefault()
+  }
   
   const addRow = (
     <Form.Row>
@@ -77,7 +81,7 @@ export default function StartModal(props) {
 
       <Modal.Body>
         <h4 className='text-center'>Enter the names of the candidates:</h4>
-        <Form validated={showValidationErrors}>
+        <Form validated={showValidationErrors} onSubmit={onFormSubmit}>
           {candidateNames.map((v, i) => {
             return <CandidateRow
               key={i}
@@ -97,7 +101,10 @@ export default function StartModal(props) {
         { canCancel &&
           <Button variant='secondary' onClick={onCancel}>Cancel</Button>
         }
-        <Button variant='primary' onClick={onConfirmClick}>Confirm</Button>
+        <Button variant='primary' disabled={candidateNames.length === 0}
+          onClick={onConfirmClick}>
+          Confirm
+        </Button>
       </Modal.Footer>
     </Modal>
   )
