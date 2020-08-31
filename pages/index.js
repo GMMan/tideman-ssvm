@@ -5,6 +5,7 @@ import { FaVoteYea } from 'react-icons/fa'
 import Header from '../components/Header'
 import StartModal from '../components/StartModal'
 import VotingCard from '../components/VotingCard'
+import WinnerModal from '../components/WinnerModal'
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -14,15 +15,17 @@ export default class Home extends React.Component {
       showNewElectionModal: true,
       candidates: [],
       ballots: [],
-      pollClosed: false
+      pollClosed: false,
+      showWinner: false,
+      winnerName: null,
     }
+    this.onClosePoll = this.onClosePoll.bind(this)
   }
 
   onSubmitNewElection = candidateNames => {
     const newCandidates = candidateNames.map(v => {
       return {
-        name: v,
-
+        name: v
       }
     })
     this.setState({
@@ -30,7 +33,8 @@ export default class Home extends React.Component {
       firstRun: false,
       showNewElectionModal: false,
       ballots: [],
-      pollClosed: false
+      pollClosed: false,
+      winnerName: null
     })
   }
 
@@ -60,8 +64,32 @@ export default class Home extends React.Component {
     this.setState({ballots: newBallots})
   }
 
-  onClosePoll = () => {
+  async onClosePoll() {
     this.setState({pollClosed: true})
+
+    const res = await fetch('/api/tideman', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        candidates: this.state.candidates,
+        ballots: this.state.ballots
+      })
+    })
+
+    if (res.ok) {
+      const jo = await res.json()
+      this.setState({winnerName: jo.winner})
+    } else {
+      this.setState({winnerName: null})
+    }
+
+    this.setState({showWinner: true})
+  }
+
+  onCloseWinner = () => {
+    this.setState({showWinner: false})
   }
 
   render() {
@@ -103,6 +131,11 @@ export default class Home extends React.Component {
             canCancel={!this.state.firstRun}
             onSubmit={this.onSubmitNewElection}
             onCancel={this.onCancelNewElection}
+          />
+          <WinnerModal
+            show={this.state.showWinner}
+            winnerName={this.state.winnerName}
+            onClose={this.onCloseWinner}
           />
         </main>
       </>
