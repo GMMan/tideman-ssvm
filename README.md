@@ -1,3 +1,16 @@
+# Tideman Election Simulator
+
+Made with [Next.js](https://nextjs.org/) and [SSVM](https://www.secondstate.io/)
+
+This is based on the [CS50 assignment](https://cs50.harvard.edu/x/2020/psets/3/tideman/)
+of the same. Add your candidates, add ballots, and cast votes on each ballot.
+Click on the big button at the bottom to see the results of the election.
+
+Remember to run `ssvmup build` before starting the server. See [here](https://github.com/second-state/ssvm-nodejs-starter#use-docker-to-build-and-run)
+if you need a Docker image to run things in.
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
