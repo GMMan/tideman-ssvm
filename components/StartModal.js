@@ -72,6 +72,7 @@ export default function StartModal(props) {
   return (
     <Modal
       show={show}
+      backdrop={canCancel ? true : 'static'}
       onHide={onCancel}
       onEnter={resetModal}
     >
