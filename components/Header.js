@@ -1,4 +1,4 @@
-import { Navbar, Button } from "react-bootstrap";
+import { Navbar, Button, Container } from "react-bootstrap";
 import Link from 'next/link'
 
 export default function Header(props) {
@@ -6,10 +6,12 @@ export default function Header(props) {
 
 	return (
 		<Navbar bg='light'>
-      <Link href='/' passHref>
-        <Navbar.Brand>Tideman</Navbar.Brand>
-      </Link>
-			<Button onClick={onNewElectionClick}>New election</Button>
+			<Container>
+				<Link href='/' passHref>
+					<Navbar.Brand>Tideman</Navbar.Brand>
+				</Link>
+				<Button onClick={onNewElectionClick}>New election</Button>
+			</Container>
 		</Navbar>
 	)
 }
