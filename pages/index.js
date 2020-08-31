@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Row, Button, Col } from 'react-bootstrap'
 import { FaVoteYea } from 'react-icons/fa'
+import Head from 'next/head'
 
 import Header from '../components/Header'
 import StartModal from '../components/StartModal'
@@ -98,6 +99,10 @@ export default class Home extends React.Component {
 
     return (
       <>
+        <Head>
+          <title>Tideman</title>
+        </Head>
+        
         <Header onNewElectionClick={this.onNewElectionButtonClick}/>
         <main>
           <Container>
