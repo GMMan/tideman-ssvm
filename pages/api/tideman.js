@@ -13,7 +13,6 @@ export default (req, res) => {
     res.send(find_winner(JSON.stringify(req.body)))
   } else {
     res.statusCode = 400
-    res.setHeader('Content-Type', 'application/json')
-    res.send(JSON.stringify({'error': 'no body'}))
+    res.json({'error': 'no body'})
   }
 }
