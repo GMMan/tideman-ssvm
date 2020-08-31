@@ -52,7 +52,7 @@ export default class VotingCard extends React.Component {
 
   onVoteClicked = () => {
     this.setState({committed: true})
-    this.props.onVote()
+    this.props.onVote(this.state.candidateOrder)
   }
 
   onAddBallotClicked = () => {
