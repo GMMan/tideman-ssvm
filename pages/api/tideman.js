@@ -1,7 +1,7 @@
 import { find_winner } from '../../pkg/tideman_lib'
 
 export default (req, res) => {
-  if (req.method === 'GET') {
+  if (req.method !== 'POST') {
     res.statusCode = 405
     res.end()
     return
