@@ -119,9 +119,11 @@ export default class Home extends React.Component {
               }
             </Row>
             <Row className='mb-3'>
-              <Button block onClick={this.onClosePoll} disabled={!canClosePoll}>
-                <FaVoteYea/> Close poll and show winner
-              </Button>
+              <Col>
+                <Button block onClick={this.onClosePoll} disabled={!canClosePoll}>
+                  <FaVoteYea/> Close poll and show winner
+                </Button>
+              </Col>
             </Row>
             {!canClosePoll &&
               <Row className='mb-3'>
